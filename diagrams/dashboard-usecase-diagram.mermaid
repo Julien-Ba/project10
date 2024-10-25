@@ -1,0 +1,27 @@
+graph LR
+    %% Actors
+    User[User]
+    Student[Student]
+    Tutor[Tutor]
+    
+    %% Use Cases
+    viewDash((View Dashboard))
+    customizeView((Customize View))
+    viewNotif((View Notifications))
+    filterInfo((Filter Information))
+    generateReport((Generate Reports))
+    
+    %% Inheritance relationships for actors
+    Student ---|Extends| User
+    Tutor ---|Extends| User
+    
+    %% Actor-Use Case relationships
+    User --- viewDash
+    User --- customizeView
+    User --- viewNotif
+    Tutor --- generateReport
+    
+    %% Use Case relationships
+    viewDash -.->|include| viewNotif
+    customizeView -.->|include| filterInfo
+    generateReport -.->|include| filterInfo

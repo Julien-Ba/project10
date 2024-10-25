@@ -1,0 +1,26 @@
+graph LR
+    %% Actors
+    User[User]
+    Student[Student]
+    Tutor[Tutor]
+    
+    %% Use Cases
+    sendMsg((Send Messages))
+    viewMsg((View Messages))
+    manageContacts((Manage Contacts))
+    searchMsg((Search Messages))
+    manageHistory((Manage History))
+    
+    %% Inheritance relationships for actors
+    Student ---|Extends| User
+    Tutor ---|Extends| User
+    
+    %% Actor-Use Case relationships
+    User --- sendMsg
+    User --- viewMsg
+    User --- manageContacts
+    
+    %% Use Case relationships
+    viewMsg -.->|include| manageHistory
+    viewMsg -.->|extend| searchMsg
+    manageContacts -.->|include| viewMsg

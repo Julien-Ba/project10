@@ -1,0 +1,29 @@
+graph LR
+    %% Actors
+    User[User]
+    Student[Student]
+    Tutor[Tutor]
+    
+    %% Use Cases
+    login((Login))
+    register((Register))
+    validateCred((Validate Credentials))
+    resetPass((Reset Password))
+    createAccount((Create Account))
+    enterDetails((Enter Personal Details))
+    verifyEmail((Verify Email))
+    
+    %% Inheritance relationships for actors
+    Student ---|Extends| User
+    Tutor ---|Extends| User
+    
+    %% Actor-Use Case relationships
+    User --- login
+    User --- register
+    
+    %% Use Case relationships
+    login -.->|include| validateCred
+    login -.->|extend| resetPass
+    register -.->|include| createAccount
+    createAccount -.->|include| enterDetails
+    createAccount -.->|include| verifyEmail

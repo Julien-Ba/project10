@@ -1,0 +1,28 @@
+graph LR
+    %% Actors
+    User[User]
+    Student[Student]
+    Tutor[Tutor]
+    
+    %% Use Cases
+    viewCal((View Calendar))
+    manageEvents((Manage Events))
+    manageAppts((Manage Appointments))
+    setReminder((Set Reminders))
+    acceptInvite((Handle Invitations))
+    
+    %% Inheritance relationships for actors
+    Student ---|Extends| User
+    Tutor ---|Extends| User
+    
+    %% Actor-Use Case relationships
+    User --- viewCal
+    Tutor --- manageEvents
+    Tutor --- manageAppts
+    
+    %% Use Case relationships
+    manageEvents -.->|include| setReminder
+    manageAppts -.->|include| setReminder
+    manageEvents -.->|include| acceptInvite
+    manageAppts -.->|include| acceptInvite
+    viewCal -.->|extend| acceptInvite

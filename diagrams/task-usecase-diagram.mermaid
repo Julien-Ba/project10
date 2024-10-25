@@ -1,0 +1,26 @@
+graph LR
+    %% Actors
+    User[User]
+    Student[Student]
+    Tutor[Tutor]
+    
+    %% Use Cases
+    viewTasks((View Tasks))
+    createTask((Create Task))
+    manageTasks((Manage Tasks))
+    trackProgress((Track Progress))
+    setPriority((Set Priority))
+    
+    %% Inheritance relationships for actors
+    Student ---|Extends| User
+    Tutor ---|Extends| User
+    
+    %% Actor-Use Case relationships
+    User --- viewTasks
+    User --- createTask
+    Tutor --- manageTasks
+    
+    %% Use Case relationships
+    createTask -.->|include| setPriority
+    manageTasks -.->|include| trackProgress
+    viewTasks -.->|extend| trackProgress
